@@ -14,13 +14,10 @@
 
 <body>
 
-    <!-- Fixed: was <formW> which is not a valid HTML element -->
-    <!-- JS addEventListener("submit") silently fails on unknown elements -->
 <header>
     <form id="color-form">
         <div class="input-group">
             <label for="color-picker">Seed Color</label>
-            <!-- Added standard aria label if you choose to hide visual text later -->
             <input id="color-picker" type="color" value="#0047AB" aria-label="Choose seed color" />
         </div>
 
@@ -41,7 +38,7 @@
         <button type="submit">Generate</button>
         <button type="button" class="btn-secondary" onclick="copyAllAsTokens()">Copy CSS Tokens</button>
 
-        <!-- Use a switch role or distinct layout wrapper for your visual toggles -->
+       
         <div class="input-group toggle-group">
             <label for="dark-mode-toggle">Night Mode</label>
             <input type="checkbox" id="dark-mode-toggle" role="switch" />
@@ -49,10 +46,10 @@
     </form>
 </header>
 
-<!-- Semantic main section handles the primary dynamic content payload -->
+
 <main id="palette-container"></main>
 
-<!-- Set accessibility roles on your visual notification state elements -->
+
 <div id="toast-notification" class="toast" role="status" aria-live="polite">Copied to clipboard!</div>
 
     <footer>
