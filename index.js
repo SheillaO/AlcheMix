@@ -101,9 +101,7 @@ function getColorScheme() {
   const mode = "monochrome";
   const count = 5;
 
-  fetch(
-    `https://thecolorapi.com/scheme?hex=${seedColor}&mode=${mode}&count=${count}`,
-  )
+  fetch(`/api/scheme?hex=${seedColor}&mode=${mode}&count=${count}`)
     .then((res) => {
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -130,8 +128,8 @@ function getColorScheme() {
     });
 }
 
-function fetchScheme(hex, mode) {
-  fetch(`https://thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=5`)
+  function fetchScheme(hex, mode) {
+  fetch(`/api/scheme?hex=${hex}&mode=${mode}&count=5`)
     .then((res) => res.json())
     .then((data) => {
       colorsArray = data.colors;
