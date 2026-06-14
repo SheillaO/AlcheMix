@@ -103,7 +103,6 @@ button:hover {
     color: #0f172a;
 }
 
-
 body.dark-mode {
     background-color: #0f172a; 
     color: #f8fafc;
@@ -143,7 +142,6 @@ body.dark-mode button:hover {
     cursor: pointer;
 }
 
-/* CLIPBOARD POPUP*/
 .toast {
     position: fixed;
     bottom: 30px;
@@ -160,7 +158,6 @@ body.dark-mode button:hover {
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
 
 .toast.show {
     opacity: 1;

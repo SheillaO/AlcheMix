@@ -23,13 +23,11 @@ function copyToClipboard(text) {
     .then(() => {
       const toast = document.getElementById("toast-notification");
 
-     
       toast.innerText = `Copied ${text} to clipboard!`;
 
-   
+     
       toast.classList.add("show");
 
-      
       setTimeout(() => {
         toast.classList.remove("show");
       }, 2500);
@@ -43,11 +41,30 @@ function getColorScheme() {
   const mode = "monochrome";
   const count = 5;
 
- 
   fetch(`https://thecolorapi.com{seedColor}&mode=${mode}&count=${count}`)
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
     .then((data) => {
       colorsArray = data.colors;
+      renderColors();
+    })
+    .catch((err) => {
+      console.error(
+        "Initial load failed. Check your internet connection:",
+        err,
+      );
+     
+      colorsArray = [
+        { hex: { value: "#0047AB" } },
+        { hex: { value: "#1E3A8A" } },
+        { hex: { value: "#3B82F6" } },
+        { hex: { value: "#60A5FA" } },
+        { hex: { value: "#93C5FD" } },
+      ];
       renderColors();
     });
 }
@@ -84,5 +101,5 @@ document
     }
   });
 
-
+// 6. Run initial load scheme on application startup
 getColorScheme();
