@@ -191,3 +191,42 @@ body.dark-mode .toast {
     align-items: center;
   }
 }
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #cbd5e1;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #64748b;
+    z-index: 10;
+}
+
+footer a {
+    color: #1e293b;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+footer a:hover {
+    color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+
+body.dark-mode footer {
+    background-color: #1e293b;
+    border-color: #475569;
+    color: #94a3b8;
+}
+
+body.dark-mode footer a {
+    color: #f8fafc;
+}
+
+body.dark-mode footer a:hover {
+    color: #3b82f6;
+    border-color: #3b82f6;
+}
