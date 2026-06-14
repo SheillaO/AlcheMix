@@ -1,0 +1,173 @@
+body {
+    font-family: "Overpass", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+    color: #1e293b;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+form label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+}
+
+#color-picker {
+    width: 60px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#scheme-select {
+    height: 40px;
+    padding: 0 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #ffffff;
+    cursor: pointer;
+    min-width: 180px;
+}
+
+button {
+    height: 40px;
+    padding: 0 24px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #1e293b;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0f172a;
+}
+
+#palette-container {
+    display: flex;
+    flex-grow: 1; 
+    width: 100%;
+}
+
+.color-column {
+    flex: 1; 
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    padding-bottom: 40px;
+    transition: transform 0.2s ease;
+}
+
+.color-column:hover {
+    transform: scaleX(1.02); 
+}
+
+.hex-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #0f172a;
+}
+
+
+body.dark-mode {
+    background-color: #0f172a; 
+    color: #f8fafc;
+}
+
+body.dark-mode form {
+    background-color: #1e293b; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode form label {
+    color: #94a3b8; 
+}
+
+body.dark-mode #scheme-select {
+    background-color: #0f172a;
+    color: #ffffff;
+    border-color: #475569;
+}
+
+body.dark-mode button {
+    background-color: #3b82f6; 
+}
+
+body.dark-mode button:hover {
+    background-color: #2563eb;
+}
+
+.toggle-group {
+    align-items: center;
+    justify-content: center;
+}
+
+#dark-mode-toggle {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* CLIPBOARD POPUP*/
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e293b;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.dark-mode .toast {
+    background-color: #f8fafc;
+    color: #0f172a;
+}

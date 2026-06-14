@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <title>AlcheMix</title>
+</head>
+<body>
+  
+    <form id="color-form">
+        <div class="input-group">
+            <label for="color-picker">Seed Color</label>
+            
+            <input id="color-picker" type="color" value="#0047AB" />
+        </div>
+    
+        <div class="input-group">
+            <label for="scheme-select">Mode</label>
+           
+            <select id="scheme-select">
+                <option value="monochrome">Monochrome</option>
+                <option value="monochrome-dark">Monochrome-dark</option>
+                <option value="monochrome-light">Monochrome-light</option>
+                <option value="analogic">Analogic</option>
+                <option value="complement">Complement</option>
+                <option value="analogic-complement">Analogic-complement</option>
+                <option value="triad">Triad</option>
+                <option value="quad">Quad</option>
+            </select>
+        </div>
+    
+        <button type="submit">Generate</button>
+        <div class="input-group toggle-group">
+            <label for="dark-mode-toggle">Night Mode</label>
+            <input type="checkbox" id="dark-mode-toggle" />
+        </div>
+        </form>
+        
+        <div id="palette-container"></div>
+        
+        <!-- FIXED: Added this toast element so the JavaScript clipboard alert can fire -->
+        <div id="toast-notification" class="toast">Copied to clipboard!</div>
+        
+        <script src="index.js"></script>
+        
+        </body>
+        
+        </html>
