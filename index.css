@@ -1,3 +1,4 @@
+/* ─── Base (identical to original) ───────────────────────────────────────── */
 body {
   font-family: "Overpass", sans-serif;
   margin: 0;
@@ -9,6 +10,7 @@ body {
   min-height: 100vh;
 }
 
+/* ─── Form (identical to original) ───────────────────────────────────────── */
 form {
   background-color: #ffffff;
   padding: 20px;
@@ -18,6 +20,7 @@ form {
   justify-content: center;
   gap: 20px;
   z-index: 10;
+  flex-wrap: wrap;
 }
 
 .input-group {
@@ -55,6 +58,7 @@ form label {
   min-width: 180px;
 }
 
+/* ─── Primary button (identical to original) ──────────────────────────────── */
 button {
   height: 40px;
   padding: 0 24px;
@@ -73,12 +77,26 @@ button:hover {
   background-color: #0f172a;
 }
 
+/* ─── New: secondary button for Copy CSS Tokens ───────────────────────────── */
+.btn-secondary {
+  background-color: transparent;
+  color: #1e293b;
+  border: 2px solid #1e293b;
+}
+
+.btn-secondary:hover {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+/* ─── Palette container (identical to original) ───────────────────────────── */
 #palette-container {
   display: flex;
   flex-grow: 1;
   width: 100%;
 }
 
+/* ─── Color column (identical to original) ────────────────────────────────── */
 .color-column {
   flex: 1;
   display: flex;
@@ -93,6 +111,7 @@ button:hover {
   filter: brightness(1.1);
 }
 
+/* ─── Hex badge (identical to original) ───────────────────────────────────── */
 .hex-text {
   font-weight: 700;
   font-size: 1.1rem;
@@ -105,6 +124,57 @@ button:hover {
   user-select: none;
 }
 
+/* ─── New: column info wrapper ────────────────────────────────────────────── */
+/* Groups token name + hex + badges at the bottom of each swatch */
+.color-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── New: CSS token label ────────────────────────────────────────────────── */
+.token-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: monospace;
+  letter-spacing: 0.05em;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: #f1f5f9;
+  padding: 3px 10px;
+  border-radius: 20px;
+  user-select: none;
+}
+
+/* ─── New: contrast badge row ─────────────────────────────────────────────── */
+.contrast-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+/* ─── New: individual WCAG badge ──────────────────────────────────────────── */
+.badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.badge.pass {
+  background-color: rgba(34, 197, 94, 0.85);
+  color: #052e16;
+}
+
+.badge.fail {
+  background-color: rgba(239, 68, 68, 0.85);
+  color: #fff1f2;
+}
+
+/* ─── Dark mode (identical to original) ───────────────────────────────────── */
 body.dark-mode {
   background-color: #0f172a;
   color: #f8fafc;
@@ -133,6 +203,19 @@ body.dark-mode button:hover {
   background-color: #2563eb;
 }
 
+/* ─── New: dark mode secondary button ─────────────────────────────────────── */
+body.dark-mode .btn-secondary {
+  background-color: transparent;
+  color: #f8fafc;
+  border-color: #f8fafc;
+}
+
+body.dark-mode .btn-secondary:hover {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* ─── Toggle group (identical to original) ────────────────────────────────── */
 .toggle-group {
   align-items: center;
   justify-content: center;
@@ -144,6 +227,7 @@ body.dark-mode button:hover {
   cursor: pointer;
 }
 
+/* ─── Toast (identical to original) ──────────────────────────────────────── */
 .toast {
   position: fixed;
   bottom: 30px;
@@ -173,60 +257,65 @@ body.dark-mode .toast {
   color: #0f172a;
 }
 
-/*Media query */
+/* ─── Footer (identical to original) ─────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #cbd5e1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #64748b;
+  z-index: 10;
+}
+
+footer a {
+  color: #1e293b;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+footer a:hover {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+body.dark-mode footer {
+  background-color: #1e293b;
+  border-color: #475569;
+  color: #94a3b8;
+}
+
+body.dark-mode footer a {
+  color: #f8fafc;
+}
+
+body.dark-mode footer a:hover {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+/* ─── Media query (identical to original) ─────────────────────────────────── */
 @media (max-width: 600px) {
   form {
     flex-direction: column;
     align-items: stretch;
     gap: 15px;
   }
+
   #color-picker {
     width: 100%;
   }
+
   #palette-container {
     flex-direction: column;
   }
+
   .color-column {
-    padding: 20px 0;
+    padding: 40px 0;
     align-items: center;
+    min-height: 120px;
   }
-}
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #ffffff;
-    border-top: 1px solid #cbd5e1;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #64748b;
-    z-index: 10;
-}
-
-footer a {
-    color: #1e293b;
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-footer a:hover {
-    color: #3b82f6;
-    border-color: #3b82f6;
-}
-
-
-body.dark-mode footer {
-    background-color: #1e293b;
-    border-color: #475569;
-    color: #94a3b8;
-}
-
-body.dark-mode footer a {
-    color: #f8fafc;
-}
-
-body.dark-mode footer a:hover {
-    color: #3b82f6;
-    border-color: #3b82f6;
 }

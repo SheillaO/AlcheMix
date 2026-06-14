@@ -14,10 +14,14 @@
 
 <body>
 
+    <!-- Fixed: was <formW> which is not a valid HTML element -->
+    <!-- JS addEventListener("submit") silently fails on unknown elements -->
+<header>
     <form id="color-form">
         <div class="input-group">
             <label for="color-picker">Seed Color</label>
-            <input id="color-picker" type="color" value="#0047AB" />
+            <!-- Added standard aria label if you choose to hide visual text later -->
+            <input id="color-picker" type="color" value="#0047AB" aria-label="Choose seed color" />
         </div>
 
         <div class="input-group">
@@ -35,19 +39,25 @@
         </div>
 
         <button type="submit">Generate</button>
+        <button type="button" class="btn-secondary" onclick="copyAllAsTokens()">Copy CSS Tokens</button>
+
+        <!-- Use a switch role or distinct layout wrapper for your visual toggles -->
         <div class="input-group toggle-group">
             <label for="dark-mode-toggle">Night Mode</label>
-            <input type="checkbox" id="dark-mode-toggle" />
+            <input type="checkbox" id="dark-mode-toggle" role="switch" />
         </div>
     </form>
+</header>
 
-    <div id="palette-container"></div>
-    <div id="toast-notification" class="toast">Copied to clipboard!</div>
+<!-- Semantic main section handles the primary dynamic content payload -->
+<main id="palette-container"></main>
+
+<!-- Set accessibility roles on your visual notification state elements -->
+<div id="toast-notification" class="toast" role="status" aria-live="polite">Copied to clipboard!</div>
 
     <footer>
-        <p>Built with ❤️ by Olga · <a href="https://github.com/SheillaO/AlcheMix"
-                target="_blank">GitHub</a> · <a href="#"
-                target="_blank">Netlify</a></p>
+        <p>Built with ❤️ by Olga · <a href="https://github.com/SheillaO/AlcheMix" target="_blank">GitHub</a> · <a
+                href="#" target="_blank">Netlify</a></p>
     </footer>
 
     <script src="index.js"></script>
