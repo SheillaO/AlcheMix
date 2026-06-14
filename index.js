@@ -100,7 +100,7 @@ function getColorScheme() {
   const seedColor = "0047AB";
   const mode = "monochrome";
   const count = 5;
-  
+
   fetch(
     `https://www.thecolorapi.com/scheme?hex=${seedColor}&mode=${mode}&count=${count}`,
   )
@@ -130,7 +130,7 @@ function getColorScheme() {
     });
 }
 
-  function fetchScheme(hex, mode) {
+function fetchScheme(hex, mode) {
   fetch(`https://www.thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=5`)
     .then((res) => {
       if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
@@ -171,7 +171,6 @@ document
     const mode = this.value || "monochrome";
     fetchScheme(hex, mode);
   });
-
 
 document
   .getElementById("dark-mode-toggle")

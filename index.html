@@ -14,43 +14,43 @@
 
 <body>
 
-<header>
-    <form id="color-form">
-        <div class="input-group">
-            <label for="color-picker">Seed Color</label>
-            <input id="color-picker" type="color" value="#0047AB" aria-label="Choose seed color" />
-        </div>
+    <header>
+        <form id="color-form">
+            <div class="input-group">
+                <label for="color-picker">Seed Color</label>
+                <input id="color-picker" type="color" value="#0047AB" aria-label="Choose seed color" />
+            </div>
 
-        <div class="input-group">
-            <label for="scheme-select">Mode</label>
-            <select id="scheme-select">
-                <option value="monochrome">Monochrome</option>
-                <option value="monochrome-dark">Monochrome-dark</option>
-                <option value="monochrome-light">Monochrome-light</option>
-                <option value="analogic">Analogic</option>
-                <option value="complement">Complement</option>
-                <option value="analogic-complement">Analogic-complement</option>
-                <option value="triad">Triad</option>
-                <option value="quad">Quad</option>
-            </select>
-        </div>
+            <div class="input-group">
+                <label for="scheme-select">Mode</label>
+                <select id="scheme-select">
+                    <option value="monochrome">Monochrome</option>
+                    <option value="monochrome-dark">Monochrome-dark</option>
+                    <option value="monochrome-light">Monochrome-light</option>
+                    <option value="analogic">Analogic</option>
+                    <option value="complement">Complement</option>
+                    <option value="analogic-complement">Analogic-complement</option>
+                    <option value="triad">Triad</option>
+                    <option value="quad">Quad</option>
+                </select>
+            </div>
 
-        <button type="submit">Generate</button>
-        <button type="button" class="btn-secondary" onclick="copyAllAsTokens()">Copy CSS Tokens</button>
-
-       
-        <div class="input-group toggle-group">
-            <label for="dark-mode-toggle">Night Mode</label>
-            <input type="checkbox" id="dark-mode-toggle" role="switch" />
-        </div>
-    </form>
-</header>
+            <button type="submit">Generate</button>
+            <button type="button" class="btn-secondary" onclick="copyAllAsTokens()">Copy CSS Tokens</button>
 
 
-<main id="palette-container"></main>
+            <div class="input-group toggle-group">
+                <label for="dark-mode-toggle">Night Mode</label>
+                <input type="checkbox" id="dark-mode-toggle" role="switch" />
+            </div>
+        </form>
+    </header>
 
 
-<div id="toast-notification" class="toast" role="status" aria-live="polite">Copied to clipboard!</div>
+    <main id="palette-container"></main>
+
+
+    <div id="toast-notification" class="toast" role="status" aria-live="polite">Copied to clipboard!</div>
 
     <footer>
         <p>Built with ❤️ by Olga · <a href="https://github.com/SheillaO/AlcheMix" target="_blank">GitHub</a> · <a
