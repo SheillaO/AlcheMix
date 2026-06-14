@@ -101,8 +101,9 @@ function getColorScheme() {
   const mode = "monochrome";
   const count = 5;
   
-  const targetUrl = `https://www.thecolorapi.com/scheme?hex=${seedColor}&mode=${mode}&count=${count}`;
-  fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`)
+  fetch(
+    `https://www.thecolorapi.com/scheme?hex=${seedColor}&mode=${mode}&count=${count}`,
+  )
     .then((res) => {
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -130,8 +131,7 @@ function getColorScheme() {
 }
 
   function fetchScheme(hex, mode) {
-  const targetUrl = `https://www.thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=5`;
-  fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`)
+  fetch(`https://www.thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=5`)
     .then((res) => {
       if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
       return res.json();
@@ -142,7 +142,9 @@ function getColorScheme() {
     })
     .catch((err) => {
       console.error("Scheme fetch failed:", err);
-      alert("Could not reach the color API. Check your connection and try again.");
+      alert(
+        "Could not reach the color API. Check your connection and try again.",
+      );
     });
 }
 
