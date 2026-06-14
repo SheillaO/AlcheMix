@@ -1,6 +1,5 @@
 let colorsArray = [];
 
-
 function renderColors() {
   let html = "";
   for (let color of colorsArray) {
@@ -16,7 +15,6 @@ function renderColors() {
   document.getElementById("palette-container").innerHTML = html;
 }
 
-
 function copyToClipboard(text) {
   navigator.clipboard
     .writeText(text)
@@ -25,7 +23,6 @@ function copyToClipboard(text) {
 
       toast.innerText = `Copied ${text} to clipboard!`;
 
-     
       toast.classList.add("show");
 
       setTimeout(() => {
@@ -35,13 +32,14 @@ function copyToClipboard(text) {
     .catch((err) => console.error("Could not copy text: ", err));
 }
 
-
 function getColorScheme() {
   const seedColor = "0047AB";
   const mode = "monochrome";
   const count = 5;
 
-  fetch(`https://thecolorapi.com{seedColor}&mode=${mode}&count=${count}`)
+  fetch(
+    `https://thecolorapi.com/scheme?hex=${seedColor}&mode=${mode}&count=${count}`,
+  )
     .then((res) => {
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -57,7 +55,7 @@ function getColorScheme() {
         "Initial load failed. Check your internet connection:",
         err,
       );
-     
+
       colorsArray = [
         { hex: { value: "#0047AB" } },
         { hex: { value: "#1E3A8A" } },
@@ -69,7 +67,6 @@ function getColorScheme() {
     });
 }
 
-
 document.getElementById("color-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -78,28 +75,39 @@ document.getElementById("color-form").addEventListener("submit", function (e) {
   const schemeMode =
     document.getElementById("scheme-select").value || "monochrome";
 
-  
-  fetch(`https://thecolorapi.com{hexColor}&mode=${schemeMode}&count=5`)
+  fetch(
+    `https://thecolorapi.com/scheme?hex=${hexColor}&mode=${schemeMode}&count=5`,
+  )
     .then((res) => res.json())
     .then((data) => {
       colorsArray = data.colors;
       renderColors();
     })
     .catch((err) => console.error(err));
-
-  document.getElementById("color-form").reset();
 });
-
 
 document
   .getElementById("dark-mode-toggle")
   .addEventListener("change", function (e) {
     if (e.target.checked) {
       document.body.classList.add("dark-mode");
+      localStorage.setItem("darkMode", "enabled");
     } else {
       document.body.classList.remove("dark-mode");
+      localStorage.setItem("darkMode", "disabled");
     }
   });
 
-// 6. Run initial load scheme on application startup
+function initializeDarkMode() {
+  const darkModeSetting = localStorage.getItem("darkMode");
+  const toggleCheckbox = document.getElementById("dark-mode-toggle");
+
+  if (darkModeSetting === "enabled") {
+    document.body.classList.add("dark-mode");
+    toggleCheckbox.checked = true;
+  }
+}
+
+// Run initial configurations on application startup
+initializeDarkMode();
 getColorScheme();
