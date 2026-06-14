@@ -219,4 +219,13 @@ open index.html
 The original source had `<formW id="color-form">` — a typo that rendered as an unknown custom element. Browsers do not fire `submit` events on unknown elements, which silently prevented the form's `addEventListener("submit", ...)` handler from ever executing. Fixed to `<form id="color-form">`.
 
 
+**Sheilla O.**  
+Technical Product-Minded Developer | Nairobi, Kenya 🇰🇪
+
+ 
+💼 [LinkedIn](https://www.linkedin.com/in/sheillaolga/) • 🐙 [GitHub](https://github.com/SheillaO/AlcheMix)
+ 
+---
+
+
  
