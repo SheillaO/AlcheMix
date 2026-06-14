@@ -165,8 +165,10 @@ document
     const hex =
       document.getElementById("color-picker").value.replace("#", "") ||
       "0047AB";
-    fetchScheme(hex, this.value);
+    const mode = this.value || "monochrome";
+    fetchScheme(hex, mode);
   });
+
 
 document
   .getElementById("dark-mode-toggle")
