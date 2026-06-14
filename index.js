@@ -34,10 +34,9 @@ function renderColors() {
     const cleanHex = color.hex.value;
     const token = `--brand-${tokenScale[i] || (i + 1) * 100}`;
 
-   
     const vsWhite = getContrastRatio(cleanHex, "#FFFFFF");
     const vsBlack = getContrastRatio(cleanHex, "#000000");
-    const passWhite = vsWhite >= 4.5; 
+    const passWhite = vsWhite >= 4.5;
     const passBlack = vsBlack >= 4.5;
 
     html += `
@@ -63,3 +62,96 @@ function renderColors() {
   document.getElementById("palette-container").innerHTML = html;
 }
 
+function copyToClipboard(text, label) {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      const toast = document.getElementById("toast-notification");
+      toast.innerText = label
+        ? `Copied ${label}!`
+        : `Copied ${text} to clipboard!`;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+    })
+    .catch((err) => console.error("Could not copy text: ", err));
+}
+
+function copyAllAsTokens() {
+  if (colorsArray.length === 0) {
+    alert("Generate a palette first.");
+    return;
+  }
+
+  const lines = colorsArray.map((color, i) => {
+    const token = `--brand-${tokenScale[i] || (i + 1) * 100}`;
+    return `  ${token}: ${color.hex.value};`;
+  });
+
+  const cssBlock = `:root {\n${lines.join("\n")}\n}`;
+  copyToClipboard(cssBlock, "CSS tokens");
+}
+
+function getColorScheme() {
+  const seedColor = "0047AB";
+  const mode = "monochrome";
+  const count = 5;
+
+  fetch(
+    `https://thecolorapi.com/scheme?hex=${seedColor}&mode=${mode}&count=${count}`,
+  )
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      colorsArray = data.colors;
+      renderColors();
+    })
+    .catch((err) => {
+      console.error(
+        "Initial load failed. Check your internet connection:",
+        err,
+      );
+
+      // Identical fallback from original
+      colorsArray = [
+        { hex: { value: "#0047AB" } },
+        { hex: { value: "#1E3A8A" } },
+        { hex: { value: "#3B82F6" } },
+        { hex: { value: "#60A5FA" } },
+        { hex: { value: "#93C5FD" } },
+      ];
+      renderColors();
+    });
+}
+
+document
+  .getElementById("dark-mode-toggle")
+  .addEventListener("change", function (e) {
+    if (e.target.checked) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("darkMode", "enabled");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("darkMode", "disabled");
+    }
+  });
+
+function initializeDarkMode() {
+  const darkModeSetting = localStorage.getItem("darkMode");
+  const toggleCheckbox = document.getElementById("dark-mode-toggle");
+
+  if (darkModeSetting === "enabled") {
+    document.body.classList.add("dark-mode");
+    toggleCheckbox.checked = true;
+  }
+}
+
+// ─── Startup ──────────────────────────────────────────────────────────────────
+// Identical to original
+initializeDarkMode();
+getColorScheme();
