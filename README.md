@@ -1,19 +1,24 @@
 # AlcheMix 🎨
  
-**Color palette generation and WCAG accessibility auditing in one tool — no backend, no framework, no build step.**
+**Colour palette generation and WCAG accessibility auditing in one tool — no backend, no framework, no build step.**
  
 Pick a seed color. Pick a harmony mode. Get a palette, its design tokens, and its accessibility score simultaneously.
+
+<img width="1916" height="861" alt="AlcheMix" src="https://github.com/user-attachments/assets/bda080c1-5278-4145-85c7-63e3d7496f15" />
+
+ <br><br>
  
+[**🚀 Explore the Live Demo**](https://alchemixapp.netlify.app/) | [**📂 View Codebase**](https://github.com/SheillaO/AlcheMix)
 ---
 ## Why This Exists
  
 Two problems show up in every design–engineering handoff:
  
 **Problem 1 — Inconsistent color tokens.**  
-Designers pick brand colors in Figma. Developers translate them manually into CSS variables, often inconsistently across codebases. There is no standard step between "a color swatch" and `--brand-500: #0047AB` in a `:root {}` block. AlcheMix closes that gap in one click.
+Designers pick brand colors in Figma. Developers translate them manually into CSS variables, often inconsistently across codebases. There is no standard step between "a color swatch" and `--brand-500: #0047AB` in a `: root {}` block. AlcheMix closes that gap in one click.
  
 **Problem 2 — Accessibility is an afterthought.**  
-WCAG 2.1 compliance is legally required in the US (ADA), EU (EAA, effective 2025), and UK (PSBAR). Despite this, color contrast is routinely checked late in the design process; or not at all. A tool that makes contrast ratios visible at the moment of palette creation changes when that conversation happens.
+WCAG 2.1 compliance is legally required in the US (ADA), EU (EAA, effective 2025), and UK (PSBAR). Despite this, color contrast is routinely checked late in the design process, or not at all. A tool that makes contrast ratios visible at the moment of palette creation changes when that conversation happens.
  
 AlcheMix combines both into a single workflow: generate a palette, audit it for WCAG AA compliance, and export it as CSS custom properties — without leaving the browser.
  
@@ -30,7 +35,7 @@ alchemix/
 └── index.js      — state, data fetching, contrast math, DOM rendering
 ```
  
-All application state lives in a single array (`colorsArray`). The UI is always a deterministic function of that array — every state change calls `renderColors()`, which rebuilds the DOM from scratch. This mirrors the unidirectional data flow that React formalises, without the framework overhead.
+All application states live in a single array (`colorsArray`). The UI is always a deterministic function of that array — every state change calls `renderColors()`, which rebuilds the DOM from scratch. This mirrors the unidirectional data flow that React formalises, without the framework overhead.
  
 ```
 User submits form
